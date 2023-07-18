@@ -3,12 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { CiLocationArrow1 } from "react-icons/ci";
 import Swale from "sweetalert2";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import {
-  useDeleteBookMutation,
-  useGetCommentQuery,
-  usePostCommentMutation,
-  useSingleBookQuery,
-} from "../redux/features/books/bookApi";
+import { useDeleteBookMutation, useGetCommentQuery, usePostCommentMutation, useSingleBookQuery } from "../redux/features/books/bookApi";
 import { toast } from "react-hot-toast";
 import { BookData } from "../types/globalTypes";
 import { useAppSelector } from "../redux/hooks";
@@ -28,16 +23,9 @@ const DetailsBook: React.FC<BookData> = () => {
   console.log(options);
   const [deleteBook, deleteBookOptions] = useDeleteBookMutation();
 
-  const {
-    data: bookData,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useSingleBookQuery(id);
+  const { data: bookData, isLoading, isError, isSuccess } = useSingleBookQuery(id);
 
-  const formattedPublicationDate = new Date(
-    bookData?.data?.publicationDate
-  ).toLocaleDateString();
+  const formattedPublicationDate = new Date(bookData?.data?.publicationDate).toLocaleDateString();
 
   const handleCommentChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
@@ -117,30 +105,20 @@ const DetailsBook: React.FC<BookData> = () => {
                   </button>
                 )}
               </div>
-              <h2 className="text-2xl font-bold mb-2">
-                {bookData?.data?.title}
-              </h2>
+              <h2 className="text-2xl font-bold mb-2">{bookData?.data?.title}</h2>
               <p className="text-gray-600 mb-4">{bookData?.data?.author}</p>
               <div className="flex items-center mb-4">
                 <span className="text-gray-500 text-sm mr-2">Genre:</span>
-                <span className="text-gray-700 text-sm">
-                  {bookData?.data?.genre}
-                </span>
+                <span className="text-gray-700 text-sm">{bookData?.data?.genre}</span>
               </div>
               <div className="flex items-center">
-                <span className="text-gray-500 text-sm mr-2">
-                  Publication Date:
-                </span>
-                <span className="text-gray-700 text-sm">
-                  {formattedPublicationDate}
-                </span>
+                <span className="text-gray-500 text-sm mr-2">Publication Date:</span>
+                <span className="text-gray-700 text-sm">{formattedPublicationDate}</span>
               </div>
             </div>
           </div>
           <div className="mb-4">
-            <span className="bg-blue-500 text-white py-1 px-2 rounded-full text-sm">
-              {bookData?.data?.reviews?.length} Reviews
-            </span>
+            <span className=" bg-teal-600 text-white py-1 px-2 rounded-full text-sm">{bookData?.data?.reviews?.length} Reviews</span>
           </div>
           <textarea
             className="mt-4 p-2 border border-gray-300 rounded-md w-full h-20 resize-none"
@@ -151,7 +129,7 @@ const DetailsBook: React.FC<BookData> = () => {
           <>
             {user?.email ? (
               <button
-                className="mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm flex items-center justify-center transition-colors"
+                className="mt-2  bg-teal-600 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm flex items-center justify-center transition-colors"
                 onClick={handleCommentSubmit}
               >
                 <CiLocationArrow1 className="mr-1" />
@@ -159,7 +137,7 @@ const DetailsBook: React.FC<BookData> = () => {
               </button>
             ) : (
               <Link
-                className="mt-2 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm flex items-center justify-center transition-colors"
+                className="mt-2  bg-teal-600 hover:bg-blue-600 text-white py-2 px-4 rounded-full text-sm flex items-center justify-center transition-colors"
                 to="/login"
               >
                 Login first for reviewing book
@@ -170,11 +148,9 @@ const DetailsBook: React.FC<BookData> = () => {
             <h3 className="font-bold mb-2">Reviews:</h3>
             {reviewList?.data?.reviews.length > 0 ? (
               <ul className="list-disc list-inside">
-                {reviewList?.data?.reviews.map(
-                  (review: string, index: number) => (
-                    <li key={index}>{review}</li>
-                  )
-                )}
+                {reviewList?.data?.reviews.map((review: string, index: number) => (
+                  <li key={index}>{review}</li>
+                ))}
               </ul>
             ) : (
               <p>No reviews yet.</p>

@@ -14,12 +14,7 @@ export const AllBooks = () => {
 
   const { user } = useAppSelector((state: { user: any }) => state.user);
 
-  const {
-    data: allBooks,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useGetBooksQuery(null);
+  const { data: allBooks, isLoading, isError, isSuccess } = useGetBooksQuery(null);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchQueryValue = e.target.value.toLowerCase();
@@ -41,17 +36,12 @@ export const AllBooks = () => {
       book.title.toLowerCase().includes(searchQuery) ||
       book.author.toLowerCase().includes(searchQuery) ||
       book.genre.toLowerCase().includes(searchQuery);
-    const isMatchingYear =
-      selectedYear === "" ||
-      new Date(book.publicationDate).getFullYear().toString() === selectedYear;
-    const isMatchingGenre =
-      selectedGenre === "" || book.genre === selectedGenre;
+    const isMatchingYear = selectedYear === "" || new Date(book.publicationDate).getFullYear().toString() === selectedYear;
+    const isMatchingGenre = selectedGenre === "" || book.genre === selectedGenre;
     return isMatchingSearch && isMatchingYear && isMatchingGenre;
   });
 
-  const genreOptions: string[] = Array.from(
-    new Set(allBooks?.data.map((book: IBooks) => book.genre))
-  );
+  const genreOptions: string[] = Array.from(new Set(allBooks?.data.map((book: IBooks) => book.genre)));
 
   if (isLoading) {
     return <Loader />;
@@ -91,13 +81,7 @@ export const AllBooks = () => {
                   className="block text-gray-900 font-semibold w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                   <option value="">All Years</option>
-                  {Array.from(
-                    new Set(
-                      allBooks?.data.map((book: IBooks) =>
-                        new Date(book.publicationDate).getFullYear()
-                      )
-                    )
-                  ).map((year) => (
+                  {Array.from(new Set(allBooks?.data.map((book: IBooks) => new Date(book.publicationDate).getFullYear()))).map((year) => (
                     <option value={year?.toString()} key={year?.toString()}>
                       {year as number}
                     </option>
@@ -125,13 +109,13 @@ export const AllBooks = () => {
               <div className="max-w-xl">
                 {user?.email ? (
                   <Link to="/add-new-book">
-                    <button className="px-6 py-3 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <button className="px-6 py-3 text-sm font-medium text-white  bg-teal-600 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
                       Add New Book
                     </button>
                   </Link>
                 ) : (
                   <Link to="/login">
-                    <button className="px-6 py-3 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <button className="px-6 py-3 text-sm font-medium text-white  bg-teal-600 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
                       Add New Book
                     </button>
                   </Link>

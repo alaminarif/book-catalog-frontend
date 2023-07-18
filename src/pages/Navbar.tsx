@@ -8,6 +8,7 @@ import { setUser } from "../redux/features/user/userSlice";
 import { toggleTheme } from "../redux/features/theme/themeSlice";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { BiLogIn, BiMoon, BiSun } from "react-icons/bi";
+import logo from "../assets/icon.png";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -41,49 +42,22 @@ const Navbar = () => {
         <nav className="w-full  dark:bg-transparent">
           <div className="container m-auto px-2 md:px-12 lg:px-7">
             <div className="flex flex-wrap items-center justify-between py-3 gap-6 md:py-4 md:gap-0">
-              <input
-                type="checkbox"
-                name="toggle_nav"
-                id="toggle_nav"
-                className="peer hidden"
-              />
+              <input type="checkbox" name="toggle_nav" id="toggle_nav" className="peer hidden" />
               <div className="w-full px-6 flex justify-between lg:w-max md:px-0 z-30">
-                <Link
-                  to="/"
-                  aria-label="logo"
-                  className="flex space-x-2 items-center"
-                >
-                  <img
-                    src="https://png.pngtree.com/template/20190316/ourmid/pngtree-books-logo-image_79143.jpg"
-                    className="w-12"
-                    alt="tailus logo"
-                    width="144"
-                    height="133"
-                  />
+                <Link to="/" aria-label="logo" className="flex space-x-2 items-center">
+                  <img src={logo} className="w-6" alt="logo" />
                   <span className="text-2xl font-bold text-yellow-900 dark:text-white">
-                    Read &{" "}
-                    <span className="text-yellow-700 dark:text-yellow-300">
-                      Discover
-                    </span>
+                    Book Catalog
+                    {/* <span className="text-yellow-700 dark:text-yellow-300">
+                     
+                    </span> */}
                   </span>
                 </Link>
 
                 <div className="flex items-center lg:hidden max-h-10">
-                  <label
-                    role="button"
-                    htmlFor="toggle_nav"
-                    aria-label="humburger"
-                    id="hamburger"
-                    className="relative w-10 h-auto p-2"
-                  >
-                    <div
-                      id="line"
-                      className="m-auto h-0.5 w-6 rounded bg-yellow-900 dark:bg-white transition duration-300"
-                    ></div>
-                    <div
-                      id="line2"
-                      className="m-auto mt-2 h-0.5 w-6 rounded bg-yellow-900 dark:bg-white transition duration-300"
-                    ></div>
+                  <label role="button" htmlFor="toggle_nav" aria-label="humburger" id="hamburger" className="relative w-10 h-auto p-2">
+                    <div id="line" className="m-auto h-0.5 w-6 rounded bg-yellow-900 dark:bg-white transition duration-300"></div>
+                    <div id="line2" className="m-auto mt-2 h-0.5 w-6 rounded bg-yellow-900 dark:bg-white transition duration-300"></div>
                   </label>
                 </div>
               </div>
@@ -97,28 +71,17 @@ const Navbar = () => {
                 <div className="text-gray-600 lg:pr-4 w-full">
                   <ul className="tracking-wide font-medium  text-sm flex flex-col gap-y-6 lg:gap-y-0 lg:flex-row w-full">
                     <li>
-                      <Link
-                        to="/"
-                        className="block md:px-4 transition dark:text-gray-300 dark:hover:text-yellow-300 hover:text-yellow-700"
-                      >
+                      <Link to="/" className="block md:px-4 transition dark:text-gray-300 dark:hover:text-yellow-300 hover:text-yellow-700">
                         <span>Home</span>
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        to="/all-books"
-                        className="block md:px-4 transition dark:text-gray-300 dark:hover:text-yellow-300 hover:text-yellow-700"
-                      >
+                      <Link to="/all-books" className="block md:px-4 transition dark:text-gray-300 dark:hover:text-yellow-300 hover:text-yellow-700">
                         <span>All Books</span>
                       </Link>
                     </li>
                     <li>
-                      <button
-                        onClick={handleToggleTheme}
-                        type="button"
-                        title="Toggle Theme"
-                        className="flex items-center focus:outline-none"
-                      >
+                      <button onClick={handleToggleTheme} type="button" title="Toggle Theme" className="flex items-center focus:outline-none">
                         {themeMode === "dark" ? (
                           <BiSun className="text-yellow-900 dark:text-yellow-300 text-lg" />
                         ) : (
@@ -145,15 +108,11 @@ const Navbar = () => {
                       <ul className="py-2">
                         <Link to="/wishlist">
                           {" "}
-                          <li className="px-4 py-2  hover:bg-purple-600 ">
-                            Wishlist
-                          </li>
+                          <li className="px-4 py-2  hover:bg-purple-600 ">Wishlist</li>
                         </Link>
                         <Link to="/read-soon">
                           {" "}
-                          <li className="px-4 py-2 hover:bg-purple-600 ">
-                            Plan To Read
-                          </li>
+                          <li className="px-4 py-2 hover:bg-purple-600 ">Plan To Read</li>
                         </Link>
                       </ul>
                     </div>
@@ -163,11 +122,10 @@ const Navbar = () => {
                       onClick={handleLogout}
                       type="button"
                       title="Want to Logout?"
-                      className="w-full py-3 px-6 text-center rounded-full transition bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max"
+                      className="w-full py-3 px-6 text-center rounded-full transition  bg-teal-600  hover:bg-teal-500 active:bg-teal-500 focus:bg-teal-300 sm:w-max"
                     >
-                      <span className="block text-yellow-900 font-semibold text-sm">
-                        LogOut{" "}
-                        <RiLogoutBoxRLine className="inline-block ml-1 text-lg" />
+                      <span className="block  font-semibold text-sm">
+                        LogOut <RiLogoutBoxRLine className="inline-block ml-1 text-lg" />
                       </span>
                     </button>
                   ) : (
@@ -175,11 +133,10 @@ const Navbar = () => {
                       <button
                         type="button"
                         title="Start buying"
-                        className="w-full py-3 px-6 text-center rounded-full transition bg-yellow-300 hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max"
+                        className="w-full py-3 px-6 text-center rounded-full transition  bg-teal-600  hover:bg-teal-500 active:bg-teal-500 focus:bg-teal-300 sm:w-max"
                       >
-                        <span className="block text-yellow-900 font-semibold text-sm">
-                          Login{" "}
-                          <BiLogIn className="inline-block ml-1 text-lg" />
+                        <span className="block text-white   font-semibold text-sm">
+                          Login <BiLogIn className="inline-block ml-1 text-lg" />
                         </span>
                       </button>
                     </Link>

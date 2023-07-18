@@ -1,12 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { IBooks } from "../types/globalTypes";
 import { Link } from "react-router-dom";
-import {
-  AiOutlineHeart,
-  AiFillHeart,
-  AiOutlineClockCircle,
-  AiFillClockCircle,
-} from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart, AiOutlineClockCircle, AiFillClockCircle } from "react-icons/ai";
 import {
   useCreateReadingListMutation,
   useCreateWishlistMutation,
@@ -22,17 +17,11 @@ interface BookCardProps {
 
 const BookCard: FC<BookCardProps> = ({ book }) => {
   const { _id, author, genre, publicationDate, title }: IBooks = book;
-  const [createWishlist, { isLoading: createWishlistLoading }] =
-    useCreateWishlistMutation();
-  const [removeWishlist, { isLoading: removeWishlistLoading }] =
-    useRemoveWishlistMutation();
-  const [createReading, { isLoading: createReadingLoading }] =
-    useCreateReadingListMutation();
-  const [removeReading, { isLoading: removeReadingLoading }] =
-    useRemoveReadingListMutation();
-  const formattedPublicationDate = new Date(
-    publicationDate
-  ).toLocaleDateString();
+  const [createWishlist, { isLoading: createWishlistLoading }] = useCreateWishlistMutation();
+  const [removeWishlist, { isLoading: removeWishlistLoading }] = useRemoveWishlistMutation();
+  const [createReading, { isLoading: createReadingLoading }] = useCreateReadingListMutation();
+  const [removeReading, { isLoading: removeReadingLoading }] = useRemoveReadingListMutation();
+  const formattedPublicationDate = new Date(publicationDate).toLocaleDateString();
 
   const [isInWishlist, setIsInWishlist] = useState(false);
   const [isAddedToReading, setIsAddedToReading] = useState(false);
@@ -123,12 +112,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
     return false;
   };
 
-  if (
-    createWishlistLoading ||
-    removeWishlistLoading ||
-    createReadingLoading ||
-    removeReadingLoading
-  ) {
+  if (createWishlistLoading || removeWishlistLoading || createReadingLoading || removeReadingLoading) {
     return <Loader />;
   }
 
@@ -151,15 +135,15 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
               </button>
               <button onClick={handleAddToReading}>
                 {isAddedToReading ? (
-                  <AiFillClockCircle className="text-blue-500 text-2xl transition duration-300 group-hover:text-blue-700" />
+                  <AiFillClockCircle className="text-teal-600 text-2xl transition duration-300 group-hover:text-blue-700" />
                 ) : (
-                  <AiOutlineClockCircle className="text-gray-600  text-2xl transition duration-300 group-hover:text-blue-500" />
+                  <AiOutlineClockCircle className="text-gray-600  text-2xl transition duration-300 group-hover:text-teal-600" />
                 )}
               </button>
             </div>
 
             <Link to={`/book-details/${_id}`}>
-              <button className="inline-block px-4 py-2 mt-4 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+              <button className="inline-block px-4 py-2 mt-4 text-white transition duration-300  bg-teal-600 rounded hover:bg-blue-600">
                 View Details
               </button>
             </Link>
