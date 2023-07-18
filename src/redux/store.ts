@@ -1,15 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './features/user/userSlice';
-import logger from 'redux-logger';
-import { api } from './api/apiSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { api } from "./api/apiSlice";
+import userSlice from "./features/user/userSlice";
+import themeSlice from "./features/theme/themeSlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    user: userReducer,
+    user: userSlice,
+    theme: themeSlice,
     [api.reducerPath]: api.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
+
 export type RootState = ReturnType<typeof store.getState>;
+
 export type AppDispatch = typeof store.dispatch;
-export default store;

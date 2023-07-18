@@ -1,11 +1,10 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { Toaster } from './components/ui/Toaster';
-import MainLayout from './layouts/MainLayout';
-import { auth } from './lib/firebase';
-import { useAppDispatch } from './redux/hooks';
-import { setLoading, setUser } from './redux/features/user/userSlice';
-import { useEffect } from 'react';
-
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import MainLayout from "./layouts/MainLayouts";
+import { Toaster } from "react-hot-toast";
+import { useAppDispatch } from "./redux/hooks";
+import { setLoading, setUser } from "./redux/features/user/userSlice";
+import { auth } from "./firebase/firebase.config";
 function App() {
   const dispatch = useAppDispatch();
 
@@ -21,12 +20,13 @@ function App() {
       }
     });
   }, [dispatch]);
-
   return (
-    <div>
-      <Toaster />
-      <MainLayout />
-    </div>
+    <>
+      <div>
+        <MainLayout />
+        <Toaster position="top-center" reverseOrder={false}></Toaster>
+      </div>
+    </>
   );
 }
 
