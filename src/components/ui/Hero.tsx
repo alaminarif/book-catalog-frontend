@@ -1,4 +1,4 @@
-import heroImage from "../../assets/Reading glasses-cuate.png";
+import heroImage from "../../assets/Book-PNG-Isolated-Picture.png";
 const Hero = () => {
   return (
     <div>
@@ -10,14 +10,10 @@ const Hero = () => {
         <div className="relative lg:flex lg:items-center lg:gap-12">
           <div className="text-center lg:text-left md:mt-12 lg:mt-0 sm:w-10/12 md:w-2/3 sm:mx-auto lg:mr-auto lg:w-6/12">
             <h1 className=" font-bold text-4xl md:text-6xl lg:text-5xl xl:text-6xl ">
-              Embark on a Journey of Reading and Discovery with Read &{" "}
-              <span className="text-primary dark:text-primaryLight">
-                Discover.
-              </span>
+              Embark on a Journey of Reading and Discovery with Read & <span className="text-primary dark:text-primaryLight">Discover.</span>
             </h1>
             <p className="mt-8">
-              Embark on a Journey of Reading and Discovery with Read & Discover.
-              Explore captivating stories, gain knowledge, and find new literary
+              Embark on a Journey of Reading and Discovery with Read & Discover. Explore captivating stories, gain knowledge, and find new literary
               adventures. Start your reading pleasure today!
             </p>
             <div>
@@ -46,9 +42,7 @@ const Hero = () => {
                       title="Start buying"
                       className="relative h-12 w-20 sm:w-auto ml-auto sm:px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-primaryLight before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                     >
-                      <span className="relative hidden w-max text-white  font-semibold md:block">
-                        Get Started
-                      </span>
+                      <span className="relative hidden w-max text-white  font-semibold md:block">Get Started</span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="relative h-6 w-6 mx-auto text-white dark:text-gray-900 md:hidden"
@@ -57,11 +51,7 @@ const Hero = () => {
                         stroke="currentColor"
                         stroke-width="2"
                       >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
                     </button>
                   </div>
@@ -88,12 +78,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="overflow-hidden w-full lg:w-7/12 lg:-mr-16">
-            <img
-              src={heroImage}
-              alt="project illustration"
-              height=""
-              width=""
-            />
+            <img src={heroImage} alt="project illustration" height="" width="" />
           </div>
         </div>
       </div>
